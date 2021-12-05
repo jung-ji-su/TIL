@@ -1,0 +1,10 @@
+SELECT * FROM tab;
+
+SELECT 	employee_id, last_name
+FROM	EMPLOYEES
+WHERE 	LAST_NAME = 'Bell'
+;
+
+SELECT 	*
+FROM 	EMPLOYEES
+;
