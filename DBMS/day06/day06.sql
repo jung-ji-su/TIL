@@ -1,0 +1,245 @@
+SELECT 	DEPARTMENT_ID ,
+		DECODE(DEPARTMENT_ID, 20, 'MA', 60, 'IT', 90,'EX', 'ETC') 
+FROM 	EMPLOYEES e ; 
+
+
+-- case() : if문과 같은 역할 함수
+SELECT 	FIRST_NAME ,
+		DEPARTMENT_ID ,
+	CASE WHEN DEPARTMENT_ID = 20 THEN 'MA'
+		 WHEN DEPARTMENT_ID = 60 THEN 'IT'
+		 WHEN DEPARTMENT_ID = 90 THEN 'EX'
+		 ELSE NULL
+		 END "DEPARTMENT"
+FROM 	EMPLOYEES e 
+;
+
+-- 10시 35분
+/*
+	문제1)
+	EMPLOYEES 테이블에서 King의 정보를 소문자로 검색하고
+	사원번호, 성명, 담당업무(소문자로 job_id), 부서번호를 출력
+*/
+SELECT 	EMPLOYEE_ID , LAST_NAME ,LOWER(LAST_NAME),
+		LOWER(JOB_ID)  , DEPARTMENT_ID  
+FROM 	EMPLOYEES e 
+WHERE 	LOWER(LAST_NAME) = 'king' 
+;
+
+
+/*
+ *  문제2)
+ *	EMPLOYEES 테이블에서 King의 정보를 대문자로 검색하고
+ *	사원번호, 성명, 담당업무(대문자로 job_id), 부서번호를 출력
+ */
+SELECT 	EMPLOYEE_ID , LAST_NAME ,
+		UPPER(JOB_ID)  , DEPARTMENT_ID  
+FROM 	EMPLOYEES e 
+WHERE 	UPPER(LAST_NAME) = 'KING' 
+;
+
+
+
+/*
+ *	문제3) 
+ *  DEPARTMENTS 테이블에서 부서번호와 부서이름, 위치번호(LOCATION_ID)를
+ *  합하여 출력하도록 하라(||)
+ */
+SELECT 	DEPARTMENT_ID || DEPARTMENT_NAME || LOCATION_ID 
+FROM 	DEPARTMENTS d 
+;
+
+
+/*
+ * 	문제4)
+ * 	EMPLOYEES 테이블에서 30번 부서 중 사원번호 이름과 담당 아이디(manager_id)를 연결하여
+ * 	출력하라.(CONCAT)
+ */
+SELECT 	CONCAT(CONCAT(EMPLOYEE_ID, LAST_NAME), MANAGER_ID)  
+FROM 	EMPLOYEES e
+WHERE 	DEPARTMENT_ID = 30
+;
+
+
+/*
+ * 	문제5)
+ *  SALARY + SALARY * COMMISSION_PCT이 10000 이상이면 'good',
+ *  5000 이상이면 'average'
+ *  1이상이면 'bad'
+ *  0이면 'no good'
+ * 	으로 평가하고 사원번호, 이름, 급여, 
+ * 	COMMISSION_PCT, SALARY + SALARY * COMMISSION_PCT
+ * 	를 출력하라.(case when)  
+ */
+
+SELECT 	EMPLOYEE_ID , FIRST_NAME , SALARY , COMMISSION_PCT, 
+		SALARY + SALARY * nvl(COMMISSION_PCT, 0),
+	CASE WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 10000 THEN 'good'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 5000 	THEN 'average'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 1 	THEN 'bad'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) = 0 		THEN 'no good'
+		 END AS grade
+FROM 	EMPLOYEES e 
+;
+
+/*
+ * 	문제6)
+ *  SALARY + SALARY * COMMISSION_PCT이 10000 이상이면 'good',
+ *  5000 이상이면 'average'
+ *  1이상이고 5000 미만이면 'bad'
+ *  0이면 'no good'
+ * 	으로 평가하고 사원번호, 이름, 급여, 
+ * 	COMMISSION_PCT, SALARY + SALARY * COMMISSION_PCT
+ * 	를 출력하라.(case when)  
+ */
+SELECT 	EMPLOYEE_ID , FIRST_NAME , SALARY , COMMISSION_PCT, 
+		SALARY + SALARY * nvl(COMMISSION_PCT, 0),
+	CASE WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 10000 			THEN 'good'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 5000 				THEN 'average'
+		 --WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) >= 1 AND
+		 --	  SALARY + SALARY * nvl(COMMISSION_PCT, 0) < 5000	THEN 'bad'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) BETWEEN 1 AND 4999	THEN 'bad'
+		 WHEN SALARY + SALARY * nvl(COMMISSION_PCT, 0) = 0 					THEN 'no good'
+		 END AS grade
+FROM 	EMPLOYEES e 
+;
+
+
+-- distinct, group by
+-- distinct는 유니크(중복을 제거)한 데이터(컬럼이나 레코드)를 조회하는 경우 사용한다.
+-- group by는 데이터를 그룹핑해서 그 결과를 가져오는 경우 사용한다. 집계함수와 짝을 이루어 사용할 수 있다.
+
+SELECT 	DISTINCT DEPARTMENT_ID 
+FROM 	EMPLOYEES e 
+;
+
+SELECT 	DEPARTMENT_ID 
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+;
+
+SELECT * FROM EMPLOYEES ORDER BY DEPARTMENT_ID ;
+
+-- 부서별 급여 합계 추가
+-- SQL Error [937] [42000]: ORA-00937: not a single-group group function
+SELECT 	DISTINCT DEPARTMENT_ID , SUM(SALARY) 
+FROM 	EMPLOYEES e 
+;
+
+-- 부서별 급여 합계 추가
+SELECT 	DEPARTMENT_ID, SUM(SALARY) 
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+;
+
+-- 부서별 사원수와 평균 급여, 총 급여를 구해보자
+SELECT 	DEPARTMENT_ID , 
+		COUNT(EMPLOYEE_ID)
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+;
+
+SELECT * FROM EMPLOYEES ORDER BY DEPARTMENT_ID ;
+SELECT COUNT(*) FROM EMPLOYEES e ;
+SELECT COUNT(*), DEPARTMENT_ID FROM EMPLOYEES e GROUP BY DEPARTMENT_ID ;
+SELECT sum(SALARY) FROM EMPLOYEES e ;
+SELECT sum(SALARY), DEPARTMENT_ID FROM EMPLOYEES e GROUP BY DEPARTMENT_ID ;
+SELECT AVG(SALARY)  FROM EMPLOYEES e ;
+SELECT AVG(SALARY), DEPARTMENT_ID  FROM EMPLOYEES e GROUP BY DEPARTMENT_ID ;
+
+-- 부서별, 직급별 사원수와 평균 급여, 부서id, 직급id(job_id) 를 구하시오
+-- TO_CHAR(AVG(SALARY), '999,999') : 소수점 이하 반올림하여 제거
+SELECT 	DEPARTMENT_ID , 
+		JOB_ID ,
+		COUNT(*), 
+		TO_CHAR(AVG(SALARY), '999,999') avgSal ,
+		SUM(SALARY) 
+FROM 	EMPLOYEES e
+WHERE 	DEPARTMENT_ID = 80
+GROUP BY DEPARTMENT_ID, JOB_ID
+ORDER BY avgSal
+--ORDER BY TO_CHAR(AVG(SALARY), '999,999')
+--ORDER BY DEPARTMENT_ID , JOB_ID 
+--ORDER BY 1,2 
+;
+
+-- 부서별 사원수를 구하여라
+-- having절은 집계함수를 가지고 조건비교를 할때 사용한다.
+-- having절은 group by 절과 함께 사용이 된다.
+SELECT 	DEPARTMENT_ID ,COUNT(*)
+FROM 	EMPLOYEES e 
+WHERE 	DEPARTMENT_ID IS NOT NULL 
+GROUP BY DEPARTMENT_ID 
+HAVING COUNT(*) >= 10
+;
+
+-- EMPLOYEES 테이블에서 급여의 최대 값이 10000 이상인 부서에 대해서
+-- 부서번호, 평균급여, 급여의 합을 구하여라
+SELECT 	DEPARTMENT_ID , AVG(SALARY) , 
+		SUM(SALARY) ,MAX(SALARY), min(SALARY)
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+--HAVING MAX(SALARY)  >= 10000
+;
+
+SELECT * FROM DEPARTMENTS d ;
+
+SELECT 	*
+FROM 	EMPLOYEES e 
+;
+
+
+/*
+ *  문제1)
+ * 	EMPLOYEES테이블에서 job_id가 "SA"로 시작하는 사람에 대하여
+ *  급여의 평균, 최고액, 최저액, 합계를 구하여 출력하라
+ */
+
+SELECT 	AVG(SALARY) , MAX(SALARY), min(SALARY), SUM(SALARY) 
+FROM 	EMPLOYEES e 
+WHERE 	JOB_ID LIKE 'SA%'
+;
+
+SELECT JOB_ID FROM 	EMPLOYEES e WHERE 	JOB_ID LIKE 'SA%';
+
+
+/*
+ * 	문제2)
+ * 	EMPLOYEES테이블에서 테이블에 등록되어 있는 인원수,
+ * 	commission_pct가 null이 아닌 인원수, 평균 연봉, 
+ *  등록되어 있는 부서의 수를 출력하라
+ */
+SELECT 	COUNT(*) ,	COUNT(COMMISSION_PCT) ,
+		AVG(SALARY) ,count(DISTINCT DEPARTMENT_ID)
+FROM 	EMPLOYEES e 
+;
+
+
+SELECT * FROM EMPLOYEES e ; -- 107
+SELECT count(*) FROM EMPLOYEES e ; -- 107
+SELECT count(MANAGER_ID) FROM EMPLOYEES e ;-- 106
+SELECT count(DEPARTMENT_ID) FROM EMPLOYEES e ;
+SELECT count(DISTINCT DEPARTMENT_ID) FROM EMPLOYEES e ;
+SELECT * FROM  EMPLOYEES e WHERE MANAGER_ID IS NULL ;
+
+
+
+/*
+ * 	문제3)
+ * 	EMPLOYEES테이블에서 부서별로 인원수, 평균급여, 
+ * 	최저급여, 최고급여, 급여의 합을 구하여 출력하라.
+ */
+
+SELECT 	DEPARTMENT_ID , COUNT(*) ,
+		AVG(SALARY) , MIN(SALARY) , 
+		MAX(SALARY) ,SUM(SALARY) 
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+;
+-- 9: 한자리의 숫자를 표현
+SELECT 	123456.78 FROM dual; 
+SELECT 	TO_CHAR(123456.78, '999,999') FROM dual; 
+SELECT 	TO_CHAR(123456.78, '999,999.99') FROM dual; 
+SELECT 	TO_CHAR(123456.78, '999,999.999') FROM dual; 
+SELECT  TO_CHAR(123456.78, '000,000') FROM dual ;
+SELECT  TO_CHAR(123456.78, '000,000.0000') FROM dual ;
