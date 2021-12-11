@@ -1,0 +1,117 @@
+SELECT DEPARTMENT_ID FROM EMPLOYEES e ;
+SELECT * FROM EMPLOYEES e ;
+SELECT * FROM DEPARTMENTS d ;
+
+-- inner join
+-- 사원의 first_name, last_name, email, department_id, department_name
+SELECT 	e.FIRST_NAME , e.LAST_NAME , e.EMAIL ,
+		e.DEPARTMENT_ID , d.DEPARTMENT_ID ,
+		d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e 
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID  = d.DEPARTMENT_ID 
+;
+
+-- inner join(EMPLOYEES, JOBS)
+-- 사원의 first_name, last_name, email, job_id, job_title
+SELECT 	e.FIRST_NAME , e.LAST_NAME , e.EMAIL ,
+		j.JOB_ID , j.JOB_TITLE 
+FROM 	EMPLOYEES e 
+	INNER JOIN JOBS j 
+	ON e.JOB_ID  = j.JOB_ID 
+;
+
+-- inner join(DEPARTMENTS, LOCATIONS)
+-- 부서의 department_id, department_name, location_id, city
+-- city가 Seattle인 경우만 조회
+SELECT 	DEPARTMENT_ID , d.DEPARTMENT_NAME ,
+		l.LOCATION_ID , l.CITY 
+FROM 	DEPARTMENTS d 
+	INNER JOIN LOCATIONS l 
+	ON d.LOCATION_ID = l.LOCATION_ID 
+WHERE 	l.CITY = 'Seattle'	
+;
+
+-- 10분까지
+-- inner join(EMPLOYEES, DEPARTMENTS, JOBS, LOCATIONS)
+-- first_name, last_name, email, department_id, department_name,
+-- job_id, job_title, city
+-- city는 Seattle
+-- 하나의 select 문
+SELECT 	e.FIRST_NAME , e.LAST_NAME , e.EMAIL ,
+		d.DEPARTMENT_ID , d.DEPARTMENT_NAME ,
+		j.JOB_ID , j.JOB_TITLE , l.CITY 
+FROM 	EMPLOYEES e 
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+	INNER JOIN JOBS j 
+	ON e.JOB_ID = j.JOB_ID 
+	INNER JOIN LOCATIONS l 
+	ON d.LOCATION_ID  = l.LOCATION_ID 
+;
+--WHERE l.CITY = 'Seattle'	
+;
+
+-- left outer join(employees, job_history)
+-- LEFT OUTER JOIN, EMPLOYEES가 기준 테이블
+SELECT  e.EMPLOYEE_ID , e.FIRST_NAME , e.HIRE_DATE ,
+		jh.START_DATE , jh.END_DATE , jh.JOB_ID , jh.DEPARTMENT_ID 
+FROM 	EMPLOYEES e 
+	LEFT OUTER JOIN JOB_HISTORY jh 
+	ON e.EMPLOYEE_ID = jh.EMPLOYEE_ID 
+--WHERE 	e.EMPLOYEE_ID IN (101, 176, 200)
+ORDER BY e.EMPLOYEE_ID 
+;
+
+-- 101, 176, 200
+SELECT * FROM JOB_HISTORY ORDER BY EMPLOYEE_ID ;
+
+
+
+SELECT * FROM DEPARTMENTS d ;	-- 27
+SELECT * FROM EMPLOYEES e ;		-- 107
+
+-- DEPARTMENTS 기준으로 left outer join
+SELECT 	d.DEPARTMENT_ID , e.EMPLOYEE_ID , e.FIRST_NAME 
+FROM 	DEPARTMENTS d 
+	LEFT OUTER JOIN EMPLOYEES e 
+	ON d.DEPARTMENT_ID = e.DEPARTMENT_ID 
+ORDER BY d.DEPARTMENT_ID 
+;
+
+-- EMPLOYEES 기준으로 right outer join
+SELECT 	d.DEPARTMENT_ID , e.EMPLOYEE_ID , e.FIRST_NAME 
+FROM 	DEPARTMENTS d 
+	RIGHT OUTER JOIN EMPLOYEES e 
+	ON d.DEPARTMENT_ID = e.DEPARTMENT_ID 
+ORDER BY e.EMPLOYEE_ID 
+;
+
+-- EMPLOYEES 기준으로 left outer join
+SELECT 	d.DEPARTMENT_ID , e.EMPLOYEE_ID , e.FIRST_NAME ,e.LAST_NAME 
+FROM 	EMPLOYEES e 
+	LEFT OUTER JOIN DEPARTMENTS d
+	ON d.DEPARTMENT_ID = e.DEPARTMENT_ID 
+ORDER BY e.EMPLOYEE_ID 
+;
+
+SELECT * FROM EMPLOYEES e WHERE EMPLOYEE_ID  = 178;
+
+-- job_history 테이블을 기준으로 employees를 테이블과 조인해서
+-- EMPLOYEE_ID , FIRST_NAME , HIRE_DATE ,
+-- START_DATE , END_DATE , JOB_ID , DEPARTMENT_ID
+
+-- job 이동 이력이 있는 직원의 
+-- 사번, 이름, 고용일자, 이동 시작 날짜, 이동 끝 날짜, 
+-- job 아이디, 부서 아이디를 조회해라
+
+SELECT 	e.EMPLOYEE_ID , e.FIRST_NAME , e.HIRE_DATE ,
+		jh.START_DATE , jh.END_DATE , jh.JOB_ID ,e.DEPARTMENT_ID ,jh.DEPARTMENT_ID 
+FROM 	JOB_HISTORY jh  
+	LEFT OUTER JOIN EMPLOYEES e 
+	ON jh.EMPLOYEE_ID  = e.EMPLOYEE_ID 
+;
+
+SELECT * FROM JOBS j WHERE JOB_ID = 'ST_CLERK';
+SELECT * FROM JOB_HISTORY jh WHERE EMPLOYEE_ID = 200;
+SELECT * FROM EMPLOYEES e WHERE EMPLOYEE_ID  = 200;
