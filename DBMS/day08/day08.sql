@@ -1,0 +1,355 @@
+-- full outer join
+-- EMPLOYEES , JOB_HISTORY , full outer join
+
+SELECT 	e.EMPLOYEE_ID , e.FIRST_NAME,e.HIRE_DATE ,
+		jh.START_DATE , jh.END_DATE , jh.JOB_ID ,
+		jh.DEPARTMENT_ID 
+FROM 	EMPLOYEES e
+	FULL OUTER JOIN JOB_HISTORY jh 
+	ON e.EMPLOYEE_ID = jh.EMPLOYEE_ID
+;
+
+/*
+ * 문제1. 사원들의 이름, 부서번호, 부서명을 출력
+ */
+-- 106
+SELECT 	e.FIRST_NAME , e.LAST_NAME ,
+		e.DEPARTMENT_ID , d.DEPARTMENT_ID,
+		d.DEPARTMENT_NAME 		
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+;
+-- 107
+SELECT 	e.FIRST_NAME , e.LAST_NAME ,
+		e.DEPARTMENT_ID , d.DEPARTMENT_ID,
+		d.DEPARTMENT_NAME 		
+FROM 	EMPLOYEES e
+	LEFT OUTER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+;
+
+
+
+/*
+ * 문제2. 30번 부서의 사원들의 이름, 직업(job_id), 부서명
+ */
+-- 6
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE e.DEPARTMENT_ID = 30	
+;
+
+
+/*
+ * 문제3. 커미션을 받는 시원의 이름, 직업, 부서번호, 부서명
+ */
+-- 34
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE e.COMMISSION_PCT IS NOT NULL 
+;
+-- 35
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	LEFT OUTER  JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE e.COMMISSION_PCT IS NOT NULL 
+;
+
+
+/*
+ * 문제4. 지역번호 2500 에서 근무하는 사원의 이름, 
+ * 직업, 부서번호, 부서명
+ */
+-- 34
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE d.LOCATION_ID = 2500
+;
+-- 34
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	LEFT OUTER  JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE d.LOCATION_ID = 2500
+;
+
+
+
+/*
+ * 문제5. 이름(first_name)에 A자가 들어가는 사원들의 이름과 부서이름을 출력
+ */
+-- 10
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE e.FIRST_NAME LIKE '%A%'
+;
+-- 10
+SELECT 	e.FIRST_NAME , e.LAST_NAME , 
+		e.JOB_ID , d.DEPARTMENT_NAME 
+FROM 	EMPLOYEES e
+	LEFT OUTER  JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+WHERE e.FIRST_NAME LIKE '%A%'
+;
+
+
+/*
+ * 문제6. 급여가 3000이하인 사원의 이름과 급여, 근무지출력
+ */
+-- 26
+SELECT 	e.FIRST_NAME , e.SALARY , d.LOCATION_ID , l.CITY 
+FROM 	EMPLOYEES e
+	INNER JOIN DEPARTMENTS d 
+	ON e.DEPARTMENT_ID = d.DEPARTMENT_ID 
+	INNER JOIN LOCATIONS l 
+	ON d.LOCATION_ID = l.LOCATION_ID 
+WHERE e.SALARY <= 3000	
+;
+
+
+/*
+ * 문제7. employees 테이블에서 각 부서별로 인원수,
+ * 급여의 평균, 최저 급여, 최고급여, 급여의 합을 구하여
+ * 급여의 합이 많은 순서대로 출력(내림차순)
+ */
+-- 11(12)
+SELECT  COUNT(*) , AVG(SALARY),
+		MIN(SALARY), MAX(SALARY),
+		SUM(SALARY) AS totalSal,
+		DEPARTMENT_ID
+FROM 	EMPLOYEES e
+WHERE 	DEPARTMENT_ID IS NOT null
+GROUP BY DEPARTMENT_ID
+ORDER BY totalSal DESC 
+;
+
+
+/*
+ * 문제8. employees테이블에서 부서 인원이 4명보다
+ * 많은 부서의 부서번호, 인원수, 급여의 합을 구하여라
+ */
+-- 5
+SELECT 	DEPARTMENT_ID , COUNT(*), SUM(SALARY) 
+FROM 	EMPLOYEES e
+GROUP BY DEPARTMENT_ID 
+HAVING COUNT(*) > 4 
+;
+
+
+
+/*
+ * 문제9. 매니저의 사번 및 그 매니저가 관리하는 직원들 중
+ * 최소 연봉을 받는 사원의 연봉을 조회
+ * 단, 매니저가 없는 사람들은 제외
+ * 최소 연봉 기준 역순으로 조회
+ */
+SELECT 	MANAGER_ID,
+		MIN(SALARY) 
+FROM 	EMPLOYEES e
+WHERE 	MANAGER_ID IS NOT NULL 
+GROUP BY MANAGER_ID
+ORDER BY MIN(SALARY) DESC 
+;
+
+-------------------------------------------------
+-- sub query
+-- EMPLOYEES 테이블에서 평균 급여보다 작게 받는 사람의
+-- employee_id, first_name, last_name
+
+-- 직원 평균 급여 6462
+SELECT ROUND(avg(salary)) FROM EMPLOYEES e ;
+
+-- 56
+SELECT 	EMPLOYEE_ID , FIRST_NAME , LAST_NAME , SALARY 
+FROM 	EMPLOYEES e
+WHERE 	SALARY < 6462
+ORDER BY SALARY 
+;
+
+-- 오류
+SELECT 	EMPLOYEE_ID , FIRST_NAME , LAST_NAME , SALARY 
+FROM 	EMPLOYEES e
+WHERE 	SALARY < ROUND(avg(salary))
+ORDER BY SALARY 
+;
+
+SELECT 	EMPLOYEE_ID , FIRST_NAME , LAST_NAME , SALARY 
+FROM 	EMPLOYEES e
+WHERE 	SALARY < (SELECT ROUND(avg(salary)) FROM EMPLOYEES e)
+ORDER BY SALARY 
+;
+
+SELECT * FROM LOCATIONS l ;
+
+-- country_id = 'US'
+-- 1400, 1500, 1600, 1700
+SELECT 	LOCATION_ID 
+FROM 	LOCATIONS l
+WHERE 	COUNTRY_ID = 'US'
+;
+
+SELECT * FROM DEPARTMENTS dep WHERE LOCATION_ID = 1600;
+
+-- DEPARTMENTS 테이블에서 location_id가 1400, 1500, 1600, 1700 데이터 출력
+SELECT 	*
+FROM 	DEPARTMENTS d 
+WHERE 	LOCATION_ID IN (1400, 1500, 1600, 1700)
+;
+
+SELECT 	*
+FROM 	DEPARTMENTS d 
+WHERE 	LOCATION_ID IN ( 	SELECT 	LOCATION_ID 
+							FROM 	LOCATIONS l
+							WHERE 	COUNTRY_ID = 'US' )
+;
+
+-- EMPLOYEES 테이블에서 
+-- 월급이 가장 작은 사람 first_name, last_name 조회
+-- sub query
+SELECT 	FIRST_NAME , LAST_NAME, SALARY  
+FROM 	EMPLOYEES e
+WHERE 	SALARY = ( SELECT min(SALARY) FROM EMPLOYEES e2 )
+;
+
+-- EMPLOYEES 테이블에서 
+-- 월급이 가장 많은 사람 first_name, last_name 조회
+-- sub query
+SELECT 	FIRST_NAME , LAST_NAME, SALARY 
+FROM 	EMPLOYEES e
+WHERE 	SALARY = ( SELECT max(SALARY) FROM EMPLOYEES e2 )
+;
+
+-- 월급이 가장 많은 사원의 
+-- first_name, last_name, job_title, salary를 출력
+SELECT 	e.FIRST_NAME , e.LAST_NAME , j.JOB_TITLE, e.SALARY 
+FROM 	EMPLOYEES e
+	INNER JOIN JOBS j 
+	ON e.JOB_ID = j.JOB_ID
+WHERE SALARY = (SELECT max(SALARY) FROM EMPLOYEES e2)
+;
+
+-- 평균 급여보다 많이 받는 사원의 
+-- first_name, last_name, job_title, salary를 출력
+SELECT 	e.FIRST_NAME , e.LAST_NAME , j.JOB_TITLE, e.SALARY 
+FROM 	EMPLOYEES e
+	INNER JOIN JOBS j 
+	ON e.JOB_ID = j.JOB_ID
+WHERE SALARY > (SELECT avg(SALARY) FROM EMPLOYEES e2) 
+;
+
+SELECT 	EMPLOYEE_ID , (SELECT count(*) FROM DEPARTMENTS )
+FROM 	EMPLOYEES e 
+;
+
+
+
+/*
+ * 문제1. EMPLOYEES 테이블에서 Kochhar의 급여보다
+ * 많은 사원의 employee_id, first_name, job_id, salary 출력
+ */
+-- 1
+SELECT 	EMPLOYEE_ID , FIRST_NAME , JOB_ID , SALARY 
+FROM 	EMPLOYEES e 
+WHERE 	SALARY > (	SELECT 	SALARY 
+					FROM 	EMPLOYEES e2 
+					WHERE 	LAST_NAME = 'Kochhar')
+;
+
+
+/*
+ * 문제2. employee 테이블에서 급여의 평균보다 작은 사원들의
+ * employee_id, first_name, job_id, salary, department_id 출력
+ */
+-- 56
+SELECT 	EMPLOYEE_ID , FIRST_NAME , JOB_ID , SALARY , DEPARTMENT_ID 
+FROM 	EMPLOYEES e 
+WHERE 	SALARY < (	SELECT 	AVG(SALARY)  
+					FROM 	EMPLOYEES e2)
+;
+
+/*
+ * 문제3. employee 테이블에서 100번 부서의 
+ * 최소 급여보다 최소 급여가 많은 다른 모든 부서를 출력 
+ */
+SELECT 	DEPARTMENT_ID, MIN(SALARY) 
+FROM 	EMPLOYEES e
+WHERE 	DEPARTMENT_ID IS NOT NULL 
+GROUP BY DEPARTMENT_ID 
+HAVING MIN(SALARY) > (	SELECT MIN(SALARY) 
+						FROM EMPLOYEES e 
+						WHERE DEPARTMENT_ID = 100) 
+;
+
+
+SELECT MIN(SALARY) FROM EMPLOYEES e WHERE DEPARTMENT_ID = 100;
+
+
+
+/*
+ * 문제4. employee 테이블에서 가장 많은 사원을 갖는 
+ * manager의 사원번호를 출력
+ */
+
+SELECT 	MANAGER_ID, COUNT(*) 
+FROM 	EMPLOYEES e
+GROUP BY MANAGER_ID; 
+HAVING COUNT(MANAGER_ID) = (SELECT MAX(count(*)) 
+							FROM EMPLOYEES 
+							GROUP BY MANAGER_ID) 
+;
+SELECT * FROM EMPLOYEES e2 ;
+SELECT DEPARTMENT_ID , MANAGER_ID FROM EMPLOYEES e ORDER BY DEPARTMENT_ID ;
+
+
+/*
+ * 문제5. employee 테이블에서 가장 많은 사원이 속해 있는 부서 번호와 
+ * 사원수를 출력
+ */
+SELECT 	DEPARTMENT_ID , COUNT(*) 
+FROM 	EMPLOYEES e 
+GROUP BY DEPARTMENT_ID 
+HAVING COUNT(DEPARTMENT_ID) = (	SELECT 	MAX(count(*))
+								FROM	EMPLOYEES e2
+								GROUP BY DEPARTMENT_ID) 
+;
+
+
+/*
+ * 문제6. employee 테이블에서 사원번호가 123인 사원의 직업과 같고
+ * 사원번호가 192인 사원의 급여보다 많은 사원의
+ * 사원번호, 이름, 직업, 급여를 출력
+ */
+SELECT 	DEPARTMENT_ID , FIRST_NAME , JOB_ID , SALARY 
+FROM 	EMPLOYEES e 
+WHERE 	JOB_ID = (SELECT JOB_ID FROM EMPLOYEES e2 WHERE EMPLOYEE_ID = 123)
+AND 	SALARY > (SELECT SALARY FROM EMPLOYEES e3 WHERE EMPLOYEE_ID = 192)
+;
+
+/*
+ * 문제7. employee 테이블에서 50번 부서의 최소 급여를 받는 사원보다
+ * 많은 급여를 받는 사원의 사원번호, 이름, 업무(job_id), 입사일자, 급여, 부서번호를 출력
+ * 단, 50번 부서는 제외
+ */
+SELECT 	EMPLOYEE_ID , FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , DEPARTMENT_ID 
+FROM 	EMPLOYEES e 
+WHERE 	SALARY > ( 	SELECT MIN(SALARY) 
+					FROM EMPLOYEES e2 
+					WHERE DEPARTMENT_ID= 50)
+AND 	DEPARTMENT_ID <> 50
+;
