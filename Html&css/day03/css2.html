@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	/*
+	li{
+		color:red;
+		text-decoration: underline;
+	}
+	#select{
+		font-size: 50px;
+	}
+	*/
+	
+	/*ul, ol 태그 모두에게 적용*/
+	ul,ol{
+		background-color: powderblue;
+	}
+	/* ul 태그 밑에있는 li 태그 선택*/
+	ul li{
+		color: red;
+	}
+	/* lecture 밑에있는 li tag */
+	#lecture>li{
+		border: 1px solid red;
+	}
+	/* class 지정 */
+	.red{
+		color: red;
+	}
+	.yellow-bg{
+		background: yellow;
+	}
+	.fancy{
+		font-weight: bold;
+		text-shadow: 4px 4px 3px black;
+	}
+</style>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li id="select">CSS</li>
+		<li>Javascript</li>
+	</ul>
+	<ol id="lecture">
+		<li>HTML</li>
+		<li>
+			<ol>
+				<li>selector</li>
+				<li>declaration</li>
+			</ol>
+		</li>
+		<li>javascript</li>
+	</ol>
+	<p class="red">p태그 문단</p>
+	<p class="red yellow-bg">p태그 문단 다른 효과도 같이 입히기</p>
+	<p class="red fancy">p태그 문단 빨간 글자와 새로운 스타일 입히기</p>
+</body>
+</html>
