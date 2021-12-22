@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	a:link{
+		color: black;
+	}
+	a:visited{
+		color: red;
+	}
+	a:active {
+		color: green;
+	}
+	a:hover {
+		color: yellow;
+	}
+	/* 	hover이면서 active상태일때는 나중에 선언된 것이 우선된다. */
+	a:focus {
+		color: white;
+	}
+	input:focus {
+		background-color: black;
+		color: white;
+	}
+</style>
+
+</head>
+<body>
+	<a href="http://www.koreaisacademy.com/">방문함</a>
+	<a href="http://a.com/">방문함</a>
+	<input type="text">
+</body>
+</html>
