@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		padding-top: 30px;
+	}
+	#parent, #other{
+		border: 5px solid tomato;
+	}
+	#me{
+		position:fixed;
+		background-color: black;
+		color: white;
+		left: 0px;
+		top: 0px;
+		height : 30px;
+		width: 100%;
+		text-align: center;
+	}
+	#large{
+		height: 10000px;
+		background-color: tomato;
+	}
+</style>
+</head>
+<body>
+	<div id="other">other</div>
+	<div id="parent">
+		parent
+		<div id="me">me</div>
+	</div>
+	<div id="large">large</div>
+</body>
+</html>

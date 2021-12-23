@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 전체적용 */
+	*{
+		box-sizing : border-box;
+	}
+	div{
+		margin: 10px;
+		width: 150px;
+/* 		box-sizing : border-box; */
+	}
+	#small{
+		border: 10px solid black;
+	}
+	#large{
+		border: 30px solid black;
+	}
+</style>
+</head>
+<body>
+	<div id="small">Hello</div>
+	<div id="large">Hello</div>	
+	<!-- 
+		여기에 적용되는 width는 엘리먼트 속성에 대한 width만 포함된다.
+		border값이 포함이 될 때는 그 너비를 예측하기 어렵다.
+		-> 이 속성을 해결하기 위해 box-sizing이 추가된다.
+	 -->
+</body>
+</html>
