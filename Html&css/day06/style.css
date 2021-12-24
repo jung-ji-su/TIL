@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* 다른 css파일을 import한다 */
+@import url("style.css");
+h1{
+	color: blue;
+}
