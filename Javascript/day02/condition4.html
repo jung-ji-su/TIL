@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+// 		console.log(prompt('당신의 나이는?') * 2 );
+		
+		var id = prompt('아이디를 입력해 주세요');
+		console.log(id);
+		
+		if( id == 'usertest' ){
+			//alert('아이디가 일치 합니다.');
+			var password = prompt('비밀번호를 입력해주세요');
+			if( password == '1234' ){
+				alert('인증했습니다.');
+			} else {
+				alert('인증에 실패 했습니다.');
+			}
+		} else {
+			alert('아이디가 일치 하지 않습니다.');
+		}
+	</script>
+</body>
+</html>
