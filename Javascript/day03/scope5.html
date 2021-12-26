@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 전역변수
+		var vscope = 'global5';
+		function fscope(){
+			document.write('<br>');
+			vscope = 'local';
+			document.write('함수안 ' + vscope);
+			document.write('<br>');
+		}
+		
+		document.write(vscope);
+		fscope();
+		document.write(vscope);
+	</script>
+
+</body>
+</html>

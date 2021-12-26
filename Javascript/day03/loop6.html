@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 11시 15분까지
+		// 1. 1부터 100까지 정수를 더하는 코드를 만들어라
+		var sums = 0;
+// 		for( var i=0; i<=100; i++ ){
+// 			if(i == 0){
+// 				continue;
+// 			}
+// 			sums += i;
+// 		}
+		for( var i=1; i<=100; i++ ){
+			sums += i;
+		}
+		document.write(sums);
+		document.write("<br>-----------------<br>");
+		
+		// 2. 1부터 10까지 곱하는 코드를 만들어라
+		var times = 1;
+		for( var i=1; i<=10; i++ ){
+// 			times = times * i;
+			times *= i ;  
+		}
+		document.write(times);
+		document.write("<br>-----------------<br>");
+		
+		// 3. 1부터 10까지의 정수 중에서 짝수만을 작은 수 부터 출력
+		for( var i=1; i<=10; i++ ){
+			if(i%2 == 0){
+				document.write(i);
+				document.write('<br>');
+			}
+		}
+		document.write("-----------------<br>");
+		
+		// 4. 1부터 10까지의 정수 중에서 홀수만을 큰 수 부터 출력
+		var odd = 10;
+		while(odd > 0){
+// 			if( odd % 2 == 1){
+			if( odd % 2 ){
+				document.write(odd);
+				document.write('<br>');
+			}
+			
+			odd--;
+		}
+		document.write("-----------------<br>");
+		
+		for (var i = 1; i <= 10 ; i++) {
+			if(i%2==1) document.write(10-i);
+			document.write('<br>');
+		}
+ 		document.write('<br>--------------------<br>');
+ 		
+ 		document.writeln("<4번문제><br>")
+		for (var i = 0; i < 10; i++) {
+			if((i+1)%2 == 0){
+				document.writeln(10-i+"<br>");
+			}else {
+				continue;
+			}
+				
+		}
+
+ 		document.write('<br>--------------------<br>');
+ 		
+ 		document.write('1~10 중 홀수 내림차순: ')
+        for (var i = 10; i > 0; i--) {
+            if (i % 2 == 1) {
+                document.write(i + ' ');
+            }
+        }
+		
+ 		document.write('<br>--------------------<br>');
+		
+		// 5. 1부터 20미만의 정수 중에서 2 또는 3의 배수가 아닌 수의 총합을 출력(&&)
+		var sum1 = 0;
+		for( var i = 0; i<20; i++ ){
+			//!(i % 2 == 0 || i % 3 == 0)
+			if( i % 2 != 0 && i % 3 != 0 ){
+				sum1 += i;
+			}
+		}
+		
+		document.write(sum1);
+		document.write('<br>--------------------<br>');
+		
+		// 6. 1부터 20미만의 정수 중에서 2 또는 3의 배수인 수의 총합을 출력(||)
+		var sum2 = 0;
+		for( var i = 0; i<20; i++ ){
+			if( i % 2 == 0 || i % 3 == 0 ){
+				sum2 += i;
+			}
+		}
+		
+		document.write(sum2);
+		document.write('<br>--------------------<br>');
+		
+		// 7. 두개의 주사위를 던졌을 때, 눈의 합이 6이되는 모든 경우의 수를 출력
+		for(var i = 1; i<=6; i++){
+			for(var j = 1; j<=6; j++){
+				if(i + j == 6){
+					document.write("i : " + i + ", j : " + j);
+					document.write('<br>');
+				}
+			}
+		}
+		
+		document.write('<br>--------------------<br>');
+		
+		/*
+		   8.  *
+			   **
+			   ***
+			   ****
+			   *****
+		*/
+		for( var i = 0; i<5; i++ ){
+			var star = '';
+			for( var j = 0; j<=i; j++ ){
+				star += '*';
+			}
+			document.write('<br>');
+			document.write(star);
+		}
+		document.write('<br>--------------------<br>');
+		
+		var star = 5;
+		var res = "";
+		for (var i = 0; i < star; i++) {
+			for (var j = 0; j <= i ; j++) {
+				res += "*";
+			}
+			res += "<br>";
+		}
+		
+		document.write(res);
+		document.writeln('<br>');
+
+		document.write('<br>--------------------<br>');
+		
+		for(var i = 1;i<=5;i++){
+			for(var j=0;j<i;j++){
+				document.write('*');
+			}
+			document.write('<br>');
+		}
+
+		document.write('<br>--------------------<br>');
+		/*
+		   9.  *****
+			    ****
+			     ***
+			      **
+			       *
+		   - document.write -> 띄어쓰기 : &nbsp;
+		*/
+		
+		for(var i = 0; i<5; i++){
+			var star = '';
+			for( var j=0; j<i; j++ ){
+				star += '&nbsp';
+			}
+			for(var k = 5; k>i; k-- ){
+				star += '*';			
+			}
+			document.write(star);
+			document.write('<br>');
+		}
+		
+		document.write('<br>--------------------<br>');
+		
+		for(var i = 0;i<5;i++){
+			for(var j=0;j<5;j++){
+				if(i>j){
+					document.write('&nbsp;');
+				}
+				else{
+					document.write('*');
+				}
+			}
+			document.write('<br>');
+		}
+
+		document.write('<br>--------------------<br>');
+		
+		document.write("<9번문제><br>");
+		for (var i = 0; i < 5; i++) {
+			for (var k = 0; k < i; k++) {
+				document.write('&nbsp')
+			}
+			for (var j = 0; j < 5-i; j++) {
+				document.write('*');
+			}	
+			document.write('<br>')
+		}
+		
+		document.write('<br>--------------------<br>');
+		
+		var star5 = 5;
+
+	     for (var i = star5; i >= 1; i--) {
+	    	var res3 = "";
+	     	for (var j = 1; j < 6 - i; j++) {
+	        	res3 += " ";
+	       	}
+	       	for (var k = 1; k <= i; k++) {
+	         	res3 += "*";
+	       	}
+// 	       	res3 += "<br>";
+			console.log(res3);
+	    }
+		//document.write(res3);
+		
+		document.write('<br>--------------------<br>');
+
+		/*
+		   10. *****
+			   ****
+			   ***
+			   **
+			   *
+		*/
+		
+		for( var i = 0; i<5; i++){
+			var star = '';
+			for(var j = 5; j>i; j--){
+				star += '*';
+			}
+			document.write(star);
+			document.write('<br>');
+		}
+		
+		document.write('<br>--------------------<br>');
+		
+		/*
+		   11.   *
+			   	**
+			   ***
+			  ****
+			 *****
+		*/
+		
+		for(var i =0; i<5; i++){
+			var star = '';
+			for( var j=1; j<5-i; j++ ){
+				star += '&nbsp';
+			}
+			for(var k=0; k<=i; k++){
+				star += '*';
+			}
+			document.write(star);
+			document.write('<br>');
+		}
+	
+	</script>
+</body>
+</html>

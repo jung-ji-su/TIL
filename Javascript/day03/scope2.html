@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var vscope = 'global2';
+		
+		function fscope() {
+// 			alert(vscope);
+			document.write(vscope);
+		}
+		function fscope2() {
+// 			alert(vscope);
+			document.write(vscope);
+		}
+		
+		fscope();
+		fscope2();
+	
+	</script>
+</body>
+</html>
