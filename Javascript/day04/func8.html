@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 매개변수가 없는 경우
+		// 다만, 이 때 괄호는 생략할 수 없다.
+		let name = () => document.write('kjh');
+		name();
+		
+		document.write('<br>');
+		
+		// 매개변수가 하나인 경우
+		// 매개변수가 하나일때는 소괄호 생략 가능
+		let name2 = x => document.write(x);
+		name2('kjh2');
+		
+		document.write('<br>');
+		
+		// 매개변수가 여러개인 경우
+		// 소괄호 생략할 수 없다.
+		// 함수 몸체 지정방법 : 함수 몸체가 한줄의 구문이라면 중괄호 생략 가능
+		//					그리고 암묵적으로 return된다.
+		// let num = (arg1, arg2) => {return arg1 + arg2};
+		// 이것과 표현이 동일하다.
+		let num = (arg1, arg2) => arg1 + arg2;
+		document.write(num(10, 20));
+		
+		document.write('<br>');
+		
+		let num2 = (arg1, arg2) => {return arg1 + arg2};
+		document.write(num2(20, 30));
+		
+		document.write('<br>');
+		
+		// undefined
+		let num3 = (arg1, arg2) => { arg1 + arg2 };
+		document.write(num3(30, 40));
+		
+		document.write('<br>');
+		
+		// 여러줄 썻을 때
+		let num4 = (a , b) => {
+			let c = 3;
+			return a + b + c;
+		}
+		
+		document.write(num4(10, 11));
+		
+		/*
+			{} : 를 사용하면 값을 반환할 때 return을 사용해야 합니다.
+				 는 여러줄 썻을 때 사용해야 한다.
+		*/
+		
+		
+	</script>
+</body>
+</html>

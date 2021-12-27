@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		let member = [10, 20, 1, 9, 8, 6, 7, 5, 4, 3, 2];
+		document.write(member);
+		document.write('<br>');
+	
+	// 	function sortNum(a,b){
+	// 		// 오름차순 
+	// 		return a - b;
+	// 	}
+		
+	// 	function sortNum2(a,b){
+	// 		// 내림차순 
+	// 		return b - a;
+	// 	}
+		
+		document.write(member.sort(function(a,b){
+			// 오름차순 
+			return a - b;
+		}));
+		document.write('<br>');
+		document.write('--------------------<br>');
+		document.write(member.sort(function(a,b){
+			// 내림차순 
+			return b - a;
+		}));
+	</script>
+</body>
+</html>
