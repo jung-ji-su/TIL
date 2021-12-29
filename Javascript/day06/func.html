@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 콜백 : 함수는 함수의 리턴 값으로도 사용 할 수 있다.
+		function cal(mode){
+			let funcs = {
+				'plus' : function(param1, param2){
+					return param1 + param2;
+				},
+				'minus' : function(param1, param2){
+					return param1 - param2;
+				}
+			};
+			
+			return funcs[mode];
+		}
+		
+		document.write(cal('plus'));
+		document.write('<br>');
+		document.write(cal('plus')(2,1));
+		document.write('<br>');
+		document.write(cal('minus')(2,1));
+		
+	</script>
+</body>
+</html>

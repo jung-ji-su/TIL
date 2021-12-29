@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function sum(){
+			let sum = 0;
+			for(let i=0; i<arguments.length; i++){
+				document.write(i + " : " 
+						+ arguments[i] + '<br>');
+				sum += arguments[i];
+			}
+			console.log(arguments);
+			return sum;
+		}
+		
+		document.write('result : ' + sum(1,2,3,4))
+	</script>
+</body>
+</html>

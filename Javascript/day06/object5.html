@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		let grades = {
+			'list'	: {'aaa':10, 'bbb':6, 'ccc':8},
+			'show'	: function(){
+				// for in 문 사용해서 document.write로
+				// list에 담겨있는 object의 key와 value를 
+				// this 키워드를 사용하여 작성하시오
+				for(let name in this.list){
+					document.write(name + " : " 
+							+ this.list[name] + "<br>")
+				}
+			}
+		};
+	
+		// 호출
+		grades.show();
+	</script>
+</body>
+</html>

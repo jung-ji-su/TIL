@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		let grades = {};
+// 		let grades = new Object();
+	
+		grades['abc'] = 80;
+		grades['def'] = 90;
+		grades['ghr'] = 87;
+		
+		for(let name in grades){
+			document.write("<li>key : " + name + 
+					", values : " + grades[name] + "</li>");
+		}
+		
+		/*
+			for문은 in뒤에 따라나오는 객체의 key값을 in 앞의 변수 name에
+			담아서 반복문을 실행한다.반복문이 실행 될때 변수 name의 값으로
+			abc,def,ghr이 순차적으로 할당되기 때문에 grades[name]을
+			통해서 객체의 값을 알아 낼 수 있다.
+		*/
+		
+	</script>
+</body>
+</html>

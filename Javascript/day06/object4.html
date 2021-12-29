@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// this : 함수가 속해있는 객체를 가르키는 지시어
+		let grades = {
+			'list'	: {'aaa':10, 'bbb':6, 'ccc':8},
+			'show'	: function(){
+				console.log( this.list );
+			}
+		};
+	
+		grades['show']();
+	</script>
+</body>
+</html>

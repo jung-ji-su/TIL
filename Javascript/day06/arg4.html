@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function zero() {
+			document.write('zero.length : ' + 
+					zero.length);
+			document.write('<br>');
+			document.write('arguments.length : ' + 
+					arguments.length);
+			document.write('<br>');
+		}
+		
+		function one(arg1) {
+			document.write('one.length : ' + 
+					one.length);
+			document.write('<br>');
+			document.write('arguments.length : ' + 
+					arguments.length);
+			document.write('<br>');
+		}
+		
+		function two(arg1, arg2) {
+			document.write('two.length : ' + 
+					two.length);
+			document.write('<br>');
+			document.write('arguments.length : ' + 
+					arguments.length);
+			document.write('<br>');
+		}
+		zero('val1','val2');
+		document.write('<br>');
+		one('val1','val2');
+		document.write('<br>');
+		two('val1');
+		
+	</script>
+</body>
+</html>

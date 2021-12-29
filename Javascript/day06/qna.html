@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 배열&함수 문제풀이(10시 50분 까지)
+		// 1. 가위, 바위, 보게임에서 랜덤으로 가위바위보를 출력하라
+		// Math.random()
+		// Math.floor() : 소수점 이하를 버림
+		// Math.ceil() : 소수점 이하를 올림
+		// Math.round() : 소수점 이하를 반올림
+		let array = ["가위", "바위", "보"];
+		
+		function gatGame(){
+			let i = Math.floor(Math.random() * 3);
+			document.write(array[i]);
+		}
+		
+		gatGame();
+		document.write("<br>--------------------------------<br>");
+		
+		
+	
+		/////////////////////////////////////////////////////////
+		/*
+			let s = [	'이유덕', '이재영', '권종표', '이재영', '박민호', '강상희',
+					    '이재영', '김지완', '최승혁', '이성연', '박영서',
+					    '박민호', '전경헌', '송정환', '김재성', '이유덕', '전경헌'];
+			2-1. 김씨와 이씨는 각각 몇 명 인가?
+			2-2. "이재영" 이라는 이름이 몇번 반복되는가?
+			2-3. 중복을 제거한 이름을 출력하세요
+			2-4. 중복을 제거한 이름을 오름차순으로 정렬하려 출력하세요
+		*/
+		
+		let s = [	'이유덕', '이재영', '권종표', '이재영', '박민호', '강상희',
+				    '이재영', '김지완', '최승혁', '이성연', '박영서',
+				    '박민호', '전경헌', '송정환', '김재성', '이유덕', '전경헌'];
+		
+		// 2-1. 김씨와 이씨는 각각 몇 명 인가?
+		// kim : 2, lee : 6
+		function naming1() {
+			let kim = 0;
+			let lee = 0;
+			
+			for(let i = 0; i<s.length; i++){
+				if(s[i][0] == '이'){
+					lee++;
+				}
+				
+				if(s[i][0] == '김'){
+					kim++;
+				}
+			}
+			
+			return "kim : "  + kim + ", lee : " + lee; 
+			
+		}
+		
+		document.write(naming1());
+		document.write("<br>--------------------------------<br>");
+		
+		// 2-2. "이재영" 이라는 이름이 몇번 반복되는가?
+		// 이재영 : 3
+		
+		function naming2(name){
+			let count = 0;
+			
+			for(let i = 0; i<s.length; i++){
+				if(s[i] == name){
+					count++;
+				}
+			}
+			
+			return name + " : " + count;
+		}
+		
+		document.write(naming2("이재영"));
+		document.write("<br>--------------------------------<br>");
+		
+		
+		
+		// 2-3. 중복을 제거한 이름을 출력하세요
+		// 권종표,강상희,김지완,최승혁,이성연,박영서,송정환,김재성
+		
+		function naming3(){
+			let uniq = [];
+			
+			for(let i =0; i<s.length; i++){
+				let uni_cnt = 0;
+				
+				for(let j = 0; j<s.length; j++){
+					if( s[i] == s[j] ){
+						uni_cnt++;
+					}
+				}
+				
+				if(uni_cnt < 2){
+					uniq.push(s[i]);
+				}
+			}
+			
+			return uniq;
+		}
+		
+		document.write( naming3() );
+		document.write("<br>--------------------------------<br>");
+		
+		// 2-4. 중복을 제거한 이름을 오름차순으로 정렬하려 출력하세요
+		
+		document.write(naming3().sort());
+		document.write("<br>--------------------------------<br>");	
+		
+		
+		/////////////////////////////////////////////////////////
+		// 3. let arr = [10, 20, 15, 25, 35];
+		// 해당 배열의 요소의 값을 받으면 배열의 인덱스 값을 반환하는 함수를 작성하시요. 
+		
+// 		let arr = [10, 20, 15, 25, 35];
+		
+		function find(value) {
+			let indexNum = arr.indexOf(value);
+			
+			if( indexNum == -1 ){
+				document.write(arr + "배열에서 " + value + " 는 배열에 존재하지 않습니다.");
+			} else {
+				document.write(arr + "배열에서 " + value + " 는 " 
+					+ indexNum + "번 인덱스에 있습니다.");
+			}
+		}
+		
+// 		find(11);
+	
+	
+		let arr = [10,20,15,25,35];
+		// 해당 배열의 요소의 값을 받으면 배열의 인덱스 값을 반환하는 함수를 작성하시오.
+		let num = prompt("10,20,15,25,35 중의 숫자를 입력하세요");
+		num = Number(num);
+// 		print(num);
+		find(num);
+		
+		
+		function print(num){
+			document.write("인덱스 값: "+arr.indexOf(num));
+		}
+
+	</script>
+</body>
+</html>

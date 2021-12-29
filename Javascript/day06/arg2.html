@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function add(x , y){
+			// arguments 객체 호출
+			console.log(arguments);
+			return x + y;
+		}
+		
+		//console.log(add(1));		// Nan
+		//console.log(add(1,2));	// 3
+		console.log(add(1,2,3));
+	</script>
+</body>
+</html>

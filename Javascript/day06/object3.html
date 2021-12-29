@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 객체에 담길수 있는 값
+		let grades = {
+				'list' : { 'aaa':10, 'bbb':6, 'ccc':80 },
+				'show' : function(){
+					document.write('Hello World');
+				}
+		};
+		
+		document.write(grades['show']);
+		document.write('<br>');
+		document.write(grades['show']());
+		document.write('<br>');
+		document.write(grades.show());
+		
+		document.write('<br>---------------<br>');
+		document.write(grades['list']);
+		document.write('<br>');
+		document.write(grades['list']['aaa']);
+		document.write('<br>');
+		document.write(grades['list']['ccc']);
+		document.write('<br>');
+		document.write(grades.list);
+		document.write('<br>');
+		document.write(grades.list.bbb);
+	</script>
+</body>
+</html>
