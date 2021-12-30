@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// javascript의 생성자란, 함수를 만들고 그 함수에 
+		// new를 붙여서 호출하면 객체가 된다.
+		function Person(){};
+		
+		let p = new Person();
+		
+		p.name = 'jjs';
+		p.introduce = function(){
+			return 'Mu name is ' + this.name;
+		}
+		
+		document.write(p.introduce());
+	</script>
+</body>
+</html>

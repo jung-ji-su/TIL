@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// o 라는 객체를 생성
+		let o = {
+			'func' : function(){
+				if( o === this ){
+					document.write("o === this");
+				}
+			}
+		}
+		
+		o.func();
+		// 객체 소속인 this는 그 객체를 가리킨다.
+		// 어떠한 객체에 속해있지 않다 : window라는 객체에 속해있다.
+	</script>
+</body>
+</html>

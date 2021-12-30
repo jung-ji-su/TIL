@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		let paramThis = null;
+		
+		// 함수로서 호출 될 때와, 생성자로서 호출될때
+		// 각기다른 내용으로 호출된다.
+		function Func() {
+			paramThis = this;
+		}
+		
+		// 함수로써 호출 될 때
+		/*
+			this는 전역객체 window가 된다.
+			함수를 호출하면 그 함수는 window라는 객체의 함수가 되기 때문이다.
+		*/
+		Func();
+		if( paramThis === window ){
+			document.write('window <br>');
+		}
+		
+		// 생성자로써 호출 될 때
+		/*
+			new로 객체를 만들시엔, 새로 생성되는 객체가 this가 된다.
+			즉, o2객체가 this에 할당된다.
+		*/
+		let o2 = new Func();
+		if( paramThis === o2 ){
+			document.write('o2 <br>');
+		}
+		
+	</script>
+
+</body>
+</html>

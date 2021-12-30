@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>	
+		// window : window는 현재 스크립트가 작동 중인 창을 나타낸다.
+		// 			탭 기능이 있는 브라우저에서는 각각의 탭을 각각의
+		//			window 객체로 나타낸다.
+		
+		function func() {
+			if( window === this ){
+				document.write("window === this");
+			}
+		}
+		
+		func();
+		// 함수를 호출했을때 this는 전역객체인 window와 같다.
+		
+	</script>
+</body>
+</html>

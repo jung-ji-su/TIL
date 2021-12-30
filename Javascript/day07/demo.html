@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#selected{color: red;}
+	.dark{
+		background-color: black;
+		color: white;
+	}
+	.dark #selected{color: yellow;}
+</style>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li>CSS</li>
+		<li id="selected">JavaScript</li>
+	</ul>
+	<input type="button" value="dark"
+		onclick="document.body.className='dark'">
+</body>
+</html>
