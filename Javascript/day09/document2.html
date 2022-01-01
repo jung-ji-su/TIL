@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li class="active">CSS</li>
+		<li class="active">javaScript</li>
+	</ul>
+	<script>
+		let lis = document.getElementsByClassName('active');
+		for(let i = 0; i<lis.length; i++){
+			lis[i].style.color = 'blue';
+		}
+	</script>
+</body>
+</html>

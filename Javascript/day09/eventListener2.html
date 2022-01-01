@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" id="btn1" value="button1">
+	<input type="button" id="btn2" value="button2">
+	
+	<script>
+		let t1 = document.getElementById('btn1');	
+		let t2 = document.getElementById('btn2');	
+	
+		function btn_listener( param ){
+			//console.log('btn_listener function!!');
+			switch(param.target.id){
+			case 'btn1':
+				alert("call btn1!!");
+				break;
+			case 'btn2':
+				alert("call btn2!!");
+				break;
+			}
+		}
+		
+		t1.addEventListener('click', btn_listener);
+		t2.addEventListener('click', btn_listener);
+	</script>
+</body>
+</html>

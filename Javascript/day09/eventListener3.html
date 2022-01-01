@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" id="btn1" value="property">
+	<input type="button" id="btn2" value="listener">
+	
+	<script>
+		function onClick(){
+			alert('click!');
+		}	
+		
+		function onClick2(){
+			alert(' 클릭!');
+		}
+		
+		// property
+		document.getElementById('btn1').onclick = function(){
+			onClick();
+		}
+		document.getElementById('btn1').onclick = function(){
+			onClick2();
+		}
+		
+		// Listener
+		document.getElementById('btn2').addEventListener('click', onClick);
+		
+		document.getElementById('btn2').addEventListener('click', onClick2);
+		
+		// removeEventListener
+		//document.getElementById('btn2').removeEventListener('click', onClick);
+	</script>
+
+</body>
+</html>
