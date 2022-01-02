@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+		window.addEventListener('DOMContentLoaded',function(){
+			let t = document.getElementById('target');
+			console.log(t);
+		});
+	</script>
+</head>
+<body>
+	<!-- 
+		다운로드 해야할 이미지 자체를 제거하고 태그들만이 먼저 화면에 
+		로드된 후에 이벤트 처리가 진행되도록 처리해주는 이벤트가 있다.
+		-> DOMContentLoaded : DOM에 있는 Content의 로드가 다 끝나면 발생
+							  img태그 다운로드를 기다리지 않고, 모든 HTML태그가
+							  준비 상태가 되면 이벤트를 발생시킨다.
+	
+	 -->
+	<p id="target">Hello</p>
+	<img src="puppy.jpg">
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<label>event on</label>
+		<input id="prevent" type="checkbox">
+	</p>
+	<p>
+		<a href="http://www.naver.com" >naver</a>
+	</p>
+	<p>
+		<form action="http://www.naver.com">
+			<input type="submit">
+		</form>
+	</p>
+	
+	<script>
+		// property a 태그, return false;
+		document.querySelector('a').onclick = function(){
+			if(document.getElementById('prevent').checked){
+				return false;
+			}
+		};
+		
+		// property form 태그, return false;
+		document.querySelector('form').onclick = function(){
+			if(document.getElementById('prevent').checked){
+				return false;
+			}
+		};
+	</script>
+
+</body>
+</html>

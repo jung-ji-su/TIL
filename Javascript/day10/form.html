@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="target" action="result.html">
+		ID : <input id="id" type="text">
+		<input type="submit">
+	</form>
+	
+	<script>
+		let t = document.getElementById('target');
+		t.addEventListener('submit',function(event){
+			if( document.getElementById('id').value.length == 0 ){
+				alert('ID 값을 입력해주세요');	
+				event.preventDefault();
+			}
+		});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+		checked : true이면 체크가 되어있는 상태
+				  false라면 체크가 되어있지 않은 상태
+	 -->
+	<p>
+		<label>event on</label>
+		<input id="prevent" type="checkbox">
+	</p>
+	<!--
+		return값이 false이면, 브라우저는 a태그에 대한 기본 동작을 취소한다. 
+	 -->
+	<p>
+		<a href="http://www.naver.com" 
+		onclick="if(document.getElementById('prevent').checked) return false">naver</a>
+	</p>
+	<p>
+		<form action="http://www.naver.com"
+			onsubmit="if(document.getElementById('prevent').checked) return false">
+			<input type="submit">
+		</form>
+	</p>
+	
+
+</body>
+</html>
