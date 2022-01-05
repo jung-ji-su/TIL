@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScript for Web Designers - Back to top button demo</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant+Infant:700,700italic|Lato:400,400italic,700">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header id="top">
+            <h1>Moby Dick</h1>
+            <h2>by Herman Melville</h2>
+        </header>
+
+        <main>
+            <p>Presently a breeze sprang up; Stubb feigned to cast off from the whale; hoisting his boats, the Frenchman soon increased his distance, while the Pequod slid in between him and Stubb's whale. Whereupon Stubb quickly pulled to the floating body, and hailing the Pequod to give notice of his intentions, at once proceeded to reap the fruit of his unrighteous cunning. Seizing his sharp boat-spade, he commenced an excavation in the body, a little behind the side fin. You would almost have thought he was digging a cellar there in the sea; and when at length his spade struck against the gaunt ribs, it was like turning up old Roman tiles and pottery buried in fat English loam. His boat's crew were all in high excitement, eagerly helping their chief, and looking as anxious as gold-hunters.</p>
+
+            <p>And all the time numberless fowls were diving, and ducking, and screaming, and yelling, and fighting around them. Stubb was beginning to look disappointed, especially as the horrible nosegay increased, when suddenly from out the very heart of this plague, there stole a faint stream of perfume, which flowed through the tide of bad smells without being absorbed by it, as one river will flow into and then along with another, without at all blending with it for a time.</p>
+
+            <p>"I have it, I have it," cried Stubb, with delight, striking something in the subterranean regions, "a purse! a purse!"</p>
+
+            <p>Dropping his spade, he thrust both hands in, and drew out handfuls of something that looked like ripe Windsor soap, or rich mottled old cheese; very unctuous and savory withal. You might easily dent it with your thumb; it is of a hue between yellow and ash colour. And this, good friends, is ambergris, worth a gold guinea an ounce to any druggist. Some six handfuls were obtained; but more was unavoidably lost in the sea, and still more, perhaps, might have been secured were it not for impatient Ahab's loud command to Stubb to desist, and come on board, else the ship would bid them good bye.</p>
+
+            <p>Now this ambergris is a very curious substance, and so important as an article of commerce, that in 1791 a certain Nantucket-born Captain Coffin was examined at the bar of the English House of Commons on that subject. For at that time, and indeed until a comparatively late day, the precise origin of ambergris remained, like amber itself, a problem to the learned. Though the word ambergris is but the French compound for grey amber, yet the two substances are quite distinct. For amber, though at times found on the sea-coast, is also dug up in some far inland soils, whereas ambergris is never found except upon the sea. Besides, amber is a hard, transparent, brittle, odorless substance, used for mouth-pieces to pipes, for beads and ornaments; but ambergris is soft, waxy, and so highly fragrant and spicy, that it is largely used in perfumery, in pastiles, precious candles, hair-powders, and pomatum. The Turks use it in cooking, and also carry it to Mecca, for the same purpose that frankincense is carried to St. Peter's in Rome. Some wine merchants drop a few grains into claret, to flavor it.</p>
+
+            <p>Who would think, then, that such fine ladies and gentlemen should regale themselves with an essence found in the inglorious bowels of a sick whale! Yet so it is. By some, ambergris is supposed to be the cause, and by others the effect, of the dyspepsia in the whale. How to cure such a dyspepsia it were hard to say, unless by administering three or four boat loads of Brandreth's pills, and then running out of harm's way, as laborers do in blasting rocks.</p>
+        </main>
+
+        <footer>
+            <p><small><em>Typography and color scheme based on <a href="http://typespiration.com/design/the-signal/">"The Signal"</a>.</em></small></p>
+            <!-- href="#" : 무조건 페이지 최상단으로 이동한다. -->
+            <a id="back-to-top" class="btnTop" href="#">Top</a>
+        </footer>
+
+        <script>
+            /*
+             * - 변수 지정하기
+             * - 문서의 높이를 계산하고 원하는 부분이 상단에서 얼마큼 떨어져 있는지 offset 값을 계산하기
+             * - 스크롤과 클릭 이벤트 작성하기
+             */
+
+            // 문서 높이 계산하기
+			// button 변수
+			let btn = document.getElementById('back-to-top');
+
+            // <html> 문서 자체를 반환함
+            let docElm = document.documentElement;
+            
+            // 문서 전체 높이를 계산
+            let docHeight = docElm.scrollHeight;
+            
+            // scroll이 생긴 만큼의 높이
+            let scrollPos = docElm.scrollTop;
+            
+            let offset;
+            
+            // 문서전체 높이에서 끝까지 내리지 않고, 
+            // 1/4 길이만큼 남았을때 버튼이 생기도록 한다.
+            if( docHeight != 0 ){
+            	offset = docHeight / 4;
+            }
+
+            // 스크롤 이벤트 추가
+			// window에 scroll이 생기면, console.log에 scrollPos
+            window.addEventListener('scroll', function(){
+            	// 실시간 스크롤 값을 넣어준다.
+            	scrollPos = docElm.scrollTop;
+            	console.log(scrollPos);
+            	
+            	if( scrollPos > offset ){
+            		btn.className = 'visible';
+            	} else {
+            		btn.className = '';
+            	}
+            });
+
+            // 클릭 이벤트 추가
+            btn.addEventListener('click',function(e){
+            	// href의 속성을 사용하지 않고 상단으로 이동하도록 하자
+            	// scroll = 0으로 만들어 보자.
+            	
+            	//<a> tag의 링크 속성을 막는다.
+            	e.preventDefault();
+            	
+				// 페이지 상단의 자연스러운 이동을 위하여 스크롤 양을
+				// 조금씩 빼주는 로직을 담고있는 함수
+            	scrollToTop();
+            });
+            
+            function scrollToTop(){
+            	/*
+	            	지정 픽셀 길이 만큼 이동
+	            	window.scrollBy(x,y); -> window.scrollBy(0, -55);
+	            */
+            	
+	            let scrollInterval = setInterval(function(){
+	            	if(scrollPos != 0){
+	            		window.scrollBy(0, -55);
+	            	} else {
+	            		clearInterval(scrollInterval);
+	            	}
+	            }, 15);
+            }
+        </script>
+    </body>
+</html>

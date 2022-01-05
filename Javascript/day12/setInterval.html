@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 시계가 보여질 div -->
+	<div id="result"></div>
+	
+	<input type="button" value="시작" onclick="StartClock()">
+	<input type="button" value="중지" onclick="StopClock()">
+	
+	<script>
+		// 현재 시간 출력
+		function printTime(){
+			// 날짜와 관련된 메서드 제공해주는 내장 객체 Date
+			let today = new Date();
+			const hh = today.getHours();
+			const mi = today.getMinutes();
+			const ss = today.getSeconds();
+// 			document.write(hh + ':' + mi + ':' + ss);
+			document.getElementById('result').innerHTML =
+				hh + ':' + mi + ':' + ss;
+		}
+		
+		let timerId = null;
+		
+		// 시계 시작
+		function StartClock(){
+			timerId = setInterval(printTime, 1000);
+		}
+		
+		// 시계 중지
+		function StopClock(){
+			if( timerId != null ){
+				clearInterval(timerId);
+			}
+		}
+	</script>
+	
+	
+</body>
+</html>

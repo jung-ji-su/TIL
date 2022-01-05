@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 인자값을 전달하지 않으면 현재 날짜와 시간을 리턴한다.
+		let now = new Date();
+		document.write(now);
+		
+		document.write('<br>-----------------<br>');
+		// 현재 시간 기준
+		// 연도를 반환한다.
+		// getYear() : deprecated
+		document.write(now.getFullYear());
+		document.write('<br>');
+		
+		// 월(0~11)
+		document.write(now.getMonth() + 1);
+		document.write('<br>');
+		// 일
+		document.write(now.getDate());
+		document.write('<br>');
+		// 시
+		document.write(now.getHours());
+		document.write('<br>');
+		// 분
+		document.write(now.getMinutes());
+		document.write('<br>');
+		// 초
+		document.write(now.getSeconds());
+		document.write('<br>');
+		// ms
+		document.write(now.getMilliseconds());
+		document.write('<br>');
+	</script>
+
+</body>
+</html>
