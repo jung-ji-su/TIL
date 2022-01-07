@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script>
+	function clickHandler(){
+		alert("click event!!");
+	}
+	
+	// HTML 랜더링이 완료 된 후 호출
+	$(function(){
+		$('#click_me').bind('click', clickHandler);
+		
+		$('#remove_event').bind('click',function(){
+			// unbind : 이벤트 제거
+			// 			어떤 이벤트의 어떤 핸들러를 제거할지에 대해서
+			//			정확하게 기입해야 한다
+			$('#click_me').unbind('click', clickHandler);
+			
+		});
+	});	
+</script>
+</head>
+<body>
+	<input id="click_me" type="button" value="click_me">
+	<input id="remove_event" type="button" value="remove_event">
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<a id="userlink" href="http://jquery.com"
+		target="_self">jQuery</a>
+		
+	<script>
+		/*
+		// attr : 속성
+		$('#userlink').attr('href','http://www.naver.com');
+	
+		//target, _blank
+		$('#userlink').attr('target','_blank');
+		
+		// color , red
+		$('#userlink').css('color','red');
+		*/
+		
+		//chain
+		$('#userlink').attr('href','http://www.naver.com')
+			.attr('target','_blank').css('color','red');
+	</script>
+
+
+</body>
+</html>
