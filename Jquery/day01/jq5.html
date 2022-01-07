@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+<style>
+	 .selected{
+         background-color: red !important;
+         color:white;
+         border:2px solid red !important;
+     }
+</style>
+</head>
+<body>
+	<ul>
+		<li id="htmlID">HTML</li>
+		<li class="selectClass">CSS</li>
+		<li>JavaScript</li>
+		<li>PHP</li>
+		<li id="mysqlID">MySQL</li>
+	</ul>
+	
+	<script>
+		// id 
+		//$('#htmlID').addClass('selected');
+		
+		// class
+		//$('.selectClass').addClass('selected');
+		
+		//tag
+		//$('li').addClass('selected');
+		
+		// 여러개
+		$('#htmlID, #mysqlID').addClass('selected');
+	</script>
+
+</body>
+</html>

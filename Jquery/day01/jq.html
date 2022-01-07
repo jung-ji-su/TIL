@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<ul id="list">
+		<li>empty</li>
+		<li>empty</li>
+		<li>empty</li>
+		<li>empty</li>
+	</ul>
+	<input id="btn" type="button" value="버튼">
+	
+	<script>
+		$('#btn').click(function(){
+			$('#list li').text('happy jQuery');
+		});
+	</script>
+	
+	<!-- 
+		    function addEvent(target, eventType,eventHandler, useCapture) {
+		        if (target.addEventListener) { // W3C DOM
+		            target.addEventListener(eventType,eventHandler,useCapture?useCapture:false);
+		        } else if (target.attachEvent) {  // IE DOM
+		            var r = target.attachEvent("on"+eventType, eventHandler);
+		        }
+		    }
+		    function clickHandler(event) {
+		        var nav = document.getElementById('list');
+		        for(var i = 0; i < nav.childNodes.length; i++) {
+		            var child = nav.childNodes[i];
+		            if(child.nodeType==3)
+		                continue;
+		            child.innerText = 'happy Coding';
+		        }
+		    }
+		    addEvent(document.getElementById('btn'), 'click', clickHandler);
+				
+	 -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

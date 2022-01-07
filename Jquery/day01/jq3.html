@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<input type="button" id="pure" value="pure">
+	<input type="button" id="jquery" value="jquery">
+	
+	<script>
+		document.getElementById('pure').addEventListener('click',function(){
+			alert('pure');
+		});
+	
+		// jQuery를 사용할때
+		$('#jquery').on('click',function(event){
+			alert('jQuery');
+		});
+	
+	</script>
+</body>
+</html>
