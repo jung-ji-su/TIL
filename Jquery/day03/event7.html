@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<h1>jQuery mouseenter(), mouseleave()</h1>
+	마우스를 <button>버튼</button>위로 올려보세요
+	<p id="text"></p>
+
+	<script>
+		// mouseenter, 마우스가 올라왔습니다.
+		$('button').mouseenter(function(){
+			$('#text').text('마우스가 올라왔습니다');
+		});
+		
+		// mouseleave, 마우스가 빠져나갔습니다.
+		$('button').mouseleave(function(){
+			$('#text').text('마우스가 빠져나갔습니다');
+		});
+		
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<h1>.on()</h1>
+	<p>이 문장 위로 마우스를 움직여 보세요.</p>
+	<div></div>
+	
+	<script>
+		// mouseenter : 영역안으로 마우스가 들어갈때
+		// mouseleave : 영역을 빠져 나갔을때
+
+		$('p').on('mouseenter mouseleave', function() {
+			$('div').append('마우스 커서가 문장 위로 들어오거나 빠져 나갔습니다.<br>');
+		});
+	</script>
+</body>
+</html>

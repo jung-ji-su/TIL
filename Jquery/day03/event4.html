@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<h1>.off()</h1>
+	<button id="btn">버튼 클릭</button>	
+	<button id="btnOn">버튼 클릭을 가능하게 한다</button>	
+	<button id="btnOff">버튼 클릭을 불가능하게 한다.</button>
+	<div></div>
+	
+	<script>
+		function action(){
+			$('div').append("버튼 이벤트!!<br>");
+		}
+		
+		$('#btn').on('click', function(){
+			action();
+		});
+		
+		$('#btnOff').on('click',function(){
+			$('#btn').off('click').text('버튼 클릭 불가능');
+		});
+		
+		// btnOn 버튼 클릭시  
+		// btn 버튼에 click 이벤트 추가, text를 "버튼 클릭 가능"
+		$('#btnOn').on('click',function(){
+			$('#btn').on('click', function(){
+				action();
+			}).text('버튼 클릭 가능');
+		});
+		
+	</script>	
+</body>
+</html>

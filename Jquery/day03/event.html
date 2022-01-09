@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<input id="click_me" type="button" value="click_me">
+	<input id="remove_event" type="button" value="remove_event">
+	
+	<script>
+		function clickHandler(){
+			alert('jQuery');
+		}
+		
+// 		$('#click_me').bind('click', clickHandler);
+		// event helper : bind방식보다 간결, 결과는 동일
+		$('#click_me').click(clickHandler);
+		
+		$('#remove_event').click(function(){
+			$('#click_me').unbind('click',clickHandler);
+		});
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	p {
+		background: yellow;
+	}
+</style>
+</head>
+<body>
+	<p id="user_p">
+		jQuery는 
+<!-- 		<strong>재미있다.</strong> -->
+	</p>
+	
+	<script>
+		$("p").append("<strong>재미있다.</strong>");
+	
+	/*
+		document.getElementById('user_p').innerHTML
+			= document.getElementById('user_p').textContent
+				+ "<strong>재미있다.</strong>";
+	*/
+	
+	</script>
+</body>
+</html>

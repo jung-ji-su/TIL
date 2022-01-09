@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+    div {
+        border:2px blue solid;
+        margin:2px;
+        padding:2px;
+    }
+    p {
+        background:yellow;
+        margin:2px;
+        padding:2px;
+    }
+    strong {
+        color:red;
+    }
+</style>
+
+</head>
+<body>
+	<span>Span Text</span>
+	<strong>What about me?</strong>
+	<span>Another One</span>
+	
+	<script>
+		$('span').wrap('<div><div><p><em><b></b></em></p></div></div>');
+	</script>
+
+</body>
+</html>
