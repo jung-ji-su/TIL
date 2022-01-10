@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	p {
+        margin: 4px;
+        font-size:16px;
+        font-weight:bolder;
+        cursor:pointer;
+    }
+    .blue {
+        color:blue;
+    }
+    .highlight {
+        background:yellow;
+    }
+</style>
+
+</head>
+<body>
+	<p class="blue"> click toggle</p>
+	<p class="blue"> HTML </p>
+	<p class="blue highlight"> javascript </p>
+	<p class="blue"> jQuery </p>
+	
+	<script>
+		$('p').click(function() {
+			//$('p').toggleClass('highlight');
+			$(this).toggleClass('highlight');
+		});
+	</script>
+
+</body>
+</html>
