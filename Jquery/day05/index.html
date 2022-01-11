@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>css 스타일 변경하기</title>
+<link rel="stylesheet" href="./css/normalize.css">
+<link rel="stylesheet" href="./css/main.css">
+
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+</head>
+<body>
+
+<header class="page-header" role="banner">
+    <h1>Creative jQuery Sample</h1>
+</header>
+
+<div class="page-main" role="main">
+    <div id="typo">
+        <div class="inner">Creative jQuery</div>
+    </div>
+</div>
+
+	<script>
+		// javascript
+// 		document.getElementsByTagName('h1')[0].style.color 
+// 					= 'tomato';
+		
+		//jQuery
+		$('h1').css({'color':'blue'});	// 속성 여러건 변경시
+// 		$('h1').css('color','tomato');	// 속성 하나 변경시
+
+		//Creative jQuery
+// 		$('#typo .inner').css('text-decoration','underline');
+// 		$('#typo .inner').css('border-bottom','5px solid red');
+// 		$('#typo .inner').css('opacity',0.5);
+		
+		// 속성 여러건 변경
+// 		$('#typo .inner').css({
+// 			'text-decoration' 	: 'underline',
+// 			'border-bottom'		: '5px solid red',
+// 			'opacity'			: 0.5			
+// 		});
+		
+		$('#typo .inner').css({
+			'textDecoration' 	: 'underline',
+			'borderBottom'		: '5px solid red',
+			'opacity'			: 0.5			
+		});
+			
+	</script>
+
+<script src="./js/main.js"></script>
+
+</body>
+</html>

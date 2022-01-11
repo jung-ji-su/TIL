@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	span {
+		color: tomato;
+		cursor: pointer;
+	}
+	
+	div{
+		margin: 3px;
+		width: 80px;
+		height: 80px;
+		background: #f00;
+	}
+</style>
+</head>
+<body>
+	<input type="button" id="fadeout" value="fade out">
+	<input type="button" id="fadein" value="fade in">
+	<input type="button" id="hide" value="hide">
+	<input type="button" id="show" value="show">
+	<input type="button" id="slidedown" value="slide down">
+	<input type="button" id="slideup" value="slide up">
+	<input type="button" id="mix" value="mix">
+	<div id="target">target</div>
+	
+	<script>
+		$('input[type="button"]').click(function(e){
+			let targetEvent = $(e.target);
+			switch( targetEvent.attr('id') ){
+				case 'fadeout':
+					$('#target').fadeOut('slow');
+					break;
+					
+				// fadein
+				case 'fadein':
+					$('#target').fadeIn('fast');
+					break;
+				
+				// hide
+				case 'hide':
+					$('#target').hide();
+					break;
+				
+				// show
+				case 'show':
+					$('#target').show();
+					break;
+				
+				// slidedown
+				case 'slidedown':
+					$('#target').hide().slideDown('slow');
+					break;
+				
+				// slideup
+				case 'slideup':
+					$('#target').slideUp('slow');
+					break;
+				
+				// mix
+				case 'mix':
+					$('#target').fadeOut('slow').fadeIn('slow')
+								.delay(1000).slideUp()
+								.slideDown('slow',function(){alert('end')});
+					break;
+			}			
+		});
+	</script>
+</body>
+</html>
