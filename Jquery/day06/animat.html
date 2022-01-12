@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<style>
+	div{
+		background: tomato;
+		height: 100px;
+		width: 100px;
+		position: absolute;
+	}
+</style>
+</head>
+<body>
+	<div></div>
+	
+	<script>
+		$('div').mouseover(function() {
+			// 이전에 하던일 멈추고 -> stop(true)
+			$(this).stop(true)
+				   .animate({backgroundColor: "blue"},500)
+		}).mouseout(function() {
+			$(this).stop(true)
+				   .animate({backgroundColor: "green"},500)
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	div{
+		background: tomato;
+		height: 100px;
+		width: 100px;
+		position: absolute;
+	}
+</style>
+</head>
+<body>
+	<input type="button" id="btn" value="움직이기">
+	<div></div>
+	
+	<script>
+		// animate() 메서드를 사용하여 div를 오른쪽으로 250px 이동하세요
+		$('#btn').click(function() {
+			$('div').animate({left : "250px"}, 1000);
+		});
+	</script>
+
+</body>
+</html>

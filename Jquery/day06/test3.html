@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li>HTML</li>
+		<li id="active">CSS</li>
+		<li>javascript</li>
+	</ul>
+	
+	<input type="button" value="javascript"  onclick="funcJs()">
+	<input type="button" value="jQuery" onclick="funcJQuery()">
+	
+	<script>
+		// javascript 버튼 클릭시, 
+		// id가 active인 경우, css 변경, color, red / textDecoration , underline 
+		function funcJs(){
+			let li = document.getElementById('active');
+			li.style.color = 'red';
+			li.style.textDecoration = 'underline';
+		}
+		
+		// jQuery 버튼 클릭시, 
+		// id가 active인 경우, css 변경, color, red / textDecoration , underline
+		function funcJQuery(){
+			$('#active').css('color', 'red')
+						.css('textDecoration', 'underline');
+		}
+		
+	</script>
+</body>
+</html>

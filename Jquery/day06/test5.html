@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	ul{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<input type="button" id="btn" value="button">
+	<ul class="menu">
+		<li>menu1</li>
+		<li>menu2</li>
+		<li>menu3</li>
+	</ul>
+	
+	<script>
+		// btn 클릭시 메뉴가 보이도록, css display: block;
+		$('#btn').click(function() {
+			$('.menu').css({display: "block"})
+		});
+	</script>
+
+</body>
+</html>

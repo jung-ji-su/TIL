@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+
+	<script>
+		let arr = ['다음' ,'네이버' ,'구글'];
+	
+		// $.each(object, function(index, item){});
+		/* 
+			첫번째 매개변수로 배열을 전달
+			두번째 매개변수로는 콜백함수를 전달
+				콜백함수의 첫번째 매개변수 index는 배열에서는 인덱스 값을 의미
+				콜백함수의 두번째 매개변수 item은 해당 인덱스가 가진 값을 의미 
+		*/
+		$.each(arr, function(index, item) {
+			let result = '';
+			result = index + " : " + item;
+			document.write(result + "<br>");
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+
+	<script>
+	// 배열을 선언
+		let arr = [
+			{ title : '다음', url :'http://daum.net' },
+			{ title : '네이버', url : 'http://naver.com' }
+		];
+	
+		$.each(arr, function(index, item) {
+			// 0 : 다음 , http://daum.net
+			// 1 : 네이버 , http://naver.com
+			let result = '';
+			result = index + " : " + item.title + " , " + item.url;
+			document.write(result);
+			document.write('<br>');
+		});
+	
+	</script>
+</body>
+</html>
