@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<ul class="list">
+		<li>HTML</li>
+		<li>CSS</li>
+		<li>JavaScript</li>
+	</ul>
+	
+	<script>
+		$('.list li').each(function(index, item) {
+			// index는 말 그대로 인덱스
+			// item은 해당 선택자인 객체를 나타낸다.
+			$(item).addClass('li_0' + index);
+		});	
+	</script>
+</body>
+</html>

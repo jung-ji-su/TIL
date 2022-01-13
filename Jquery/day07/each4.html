@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<style>
+	.s1{color: red;}
+	.s2{color: blue;}
+	.s3{color: green;}
+	.s4{color: brown;}
+</style>
+</head>
+<body>
+	<p>HTML</p>
+	<p>JavaScript</p>
+	<p>java</p>
+	<p>DBMS</p>
+	
+	<script>
+		// each문 
+		$('p').each(function(index, item) {
+			if( index == 2 ){
+				return false;
+			}
+			$(this).addClass('s' + (index + 1));
+		});
+	</script>
+</body>
+</html>

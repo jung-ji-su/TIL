@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<script>
+		let obj1 = {
+			"name" : "google"
+		};
+		
+		let obj2 = {
+			"url" : "www.google.com",
+			"abc" : "def"
+		};
+		
+		let obj3 = {
+			"name" : "jjs",
+			"url"  : "www.jjs.com",
+			"book" : "jQuery"
+		};
+		
+		$.extend(obj1, obj2, obj3);
+		//$.extend(obj1, obj2);
+		
+		// each문, document.write, key = name, value = google
+		$.each(obj1, function(key, value) {
+			document.write('key = ' + key + ", value = " + value + '<br>');
+		});
+		
+		document.write('<br>-----------------<br>');
+		$.each(obj2, function(key, value) {
+			document.write('key = ' + key + ", value = " + value + '<br>');
+		});
+		
+		document.write('<br>-----------------<br>');
+		$.each(obj3, function(key, value) {
+			document.write('key = ' + key + ", value = " + value + '<br>');
+		});
+		
+	</script>
+</body>
+</html>

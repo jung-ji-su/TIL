@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+
+	<script>
+		// 객체를 선언
+		let obj = {
+			daum 	: 'http://daum.net',
+			naver 	: 'http://naver.com' 
+		};
+		
+		$.each(obj, function(index, item) {
+			// 첫 번째 index는 객체의 키를 의미
+			// 두 번째 item은 키가 가진 값을 의미
+			// daum  :  http://daum.net
+			// naver :  http://naver.com
+			
+			let result = '';
+			result = index + ' : ' + item;
+			document.write(result + '<br>');
+		});
+	
+	
+	
+	</script>
+</body>
+</html>

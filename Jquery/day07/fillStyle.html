@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<canvas id="myCanvas" width="600" height="450"> 
+   		Your browser does not support the canvas feature
+  	</canvas>
+  	
+  	<script>
+  		let ctx = $("#myCanvas")[0].getContext('2d');
+		
+  		for(let i = 0; i<6; i++){
+			for(let j = 0; j<6; j++){
+				ctx.fillStyle = 'rgb(' 
+						+ Math.floor(255 - 42.5 * i) + "," 
+						+ Math.floor(255 - 42.5 * j) + ","
+						+ '0 )';
+				ctx.fillRect(j*25, i*25, 25, 25);
+				ctx.strokeStyle = 'red';
+				ctx.strokeRect(j*25, i*25, 25, 25);
+			}
+		}		 		
+// 			ctx.fillStyle = 'rgb(255, 165, 0)';
+// 			ctx.fillRect(0, 0, 25, 25);
+// 			ctx.fillStyle = 'rgb(255, 145, 0)';
+// 			ctx.fillRect(25, 0, 25, 25);
+// 			ctx.fillStyle = 'rgb(255, 125, 0)';
+// 			ctx.fillRect(50, 0, 25, 25);
+// 			ctx.fillStyle = 'rgb(255, 105, 0)';
+// 			ctx.fillRect(75, 0, 25, 25);  				  				
+
+  	</script>
+</body>
+</html>
