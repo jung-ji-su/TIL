@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	<select id="getBoardList" resultType="boarddto" parameterType="hashmap">
+		SELECT * FROM 
+			(SELECT 	ROWNUM R , D.* 
+				FROM 	(SELECT * FROM TBL_BOARD ORDER BY BOARDNUM DESC) D ) B
+		WHERE B.R BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="getBoardCnt" resultType="_int">
+		SELECT COUNT(*)  FROM TBL_BOARD
+	</select>
+	
+	<insert id="insertBoard" parameterType="boarddto">
+		INSERT INTO TBL_BOARD VALUES 
+		(board_seq.nextval, #{boardtitle}, #{boardcontents},#{username},sysdate, 0)
+	</insert>
+	
+	<select id="getDetail" parameterType="_int" resultType="boarddto">
+		select * from 	TBL_BOARD where boardnum = #{boardnum}
+	</select>
+	
+</mapper>
