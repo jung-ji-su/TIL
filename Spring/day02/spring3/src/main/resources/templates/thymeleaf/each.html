@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>전화번호</th>
+			<th>성별</th>
+			<th>삼항연산자</th>
+		</tr>
+		<tr th:each="member : ${memberList}">
+			<td><span th:text="${member.no}"></span></td>
+			<td><span th:text="${member.name}"></span></td>
+			<td><span th:text="${member.phone}"></span></td>
+			
+			<th:block th:if="${member.no} == 1">
+				<td><span>남자</span></td>
+			</th:block>
+			
+			<th:block th:unless="${member.no} == 1">
+				<td><span>여자</span></td>
+			</th:block>
+			
+			<td>
+				<p th:text="${member.no == 1 ? '남자':'여자'}"></p>
+			</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

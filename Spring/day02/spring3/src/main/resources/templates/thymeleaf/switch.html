@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<th:block th:switch="${username}">
+		<span th:case="홍길동">홍길동님 환영합니다.</span>
+		<span th:case="길동이">길동이님 환영합니다.</span>
+	</th:block>
+</body>
+</html>
